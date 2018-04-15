@@ -1,11 +1,15 @@
 package com.ohorodnik.lab5db.controller;
 
+import com.ohorodnik.lab5db.DAO.building.impls.BuildingDAOFakeImpl;
 import com.ohorodnik.lab5db.model.*;
 import com.ohorodnik.lab5db.repository.*;
+import com.ohorodnik.lab5db.service.building.impls.BuildingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -39,8 +43,13 @@ public class GeneralController {
     @Autowired
     TypeOfOrganizationRepository typeOfOrganizationRepository;
 
+
+
+
     @RequestMapping("/building")
-    public List<Building> getBuilding(){ return buildingRepository.findAll(); }
+    public List<Building> getBuilding() throws SQLException {
+
+        return buildingRepository.findAll(); }
 
     @RequestMapping("/class")
     public List<ClassBuilding> getClassBuilding(){ return classBuildingRepository.findAll(); }
@@ -66,38 +75,12 @@ public class GeneralController {
     @RequestMapping("/type")
     public List<TypeOfOrganization> getTypeOfOrganization(){ return typeOfOrganizationRepository.findAll(); }
 
-    /*@RequestMapping("/pidor")
-    public String getPidor(){
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        buildingRepository.save(new Building(13,34,23,5,"pidor","vitlik"));
-        return "Pidor";
+    //Test Method
+    @RequestMapping("/insert")
+    public String getInsert(){
+        buildingRepository.save(new Building(3,3,3,4,"fgffgfg","gfgf"));
+
+        return "Insert Fake Database!";
     }
-*/
+
 }

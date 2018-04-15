@@ -17,8 +17,10 @@ public class TypeOfOrganization {
     private String organizationCharacteristic;
 
 
-    public TypeOfOrganization(int idTypeOfOrganization, String organizationCharacteristic) {
-        this.idTypeOfOrganization = idTypeOfOrganization;
+
+
+
+    public TypeOfOrganization(String organizationCharacteristic) {
         this.organizationCharacteristic = organizationCharacteristic;
     }
 

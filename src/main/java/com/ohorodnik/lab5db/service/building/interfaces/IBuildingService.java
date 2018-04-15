@@ -1,6 +1,21 @@
 package com.ohorodnik.lab5db.service.building.interfaces;
 
-import com.ohorodnik.lab5db.repository.BuildingRepository;
 
-public interface IBuildingService extends BuildingRepository {
+import com.ohorodnik.lab5db.model.Building;
+
+import java.sql.SQLException;
+import java.util.List;
+
+public interface IBuildingService {
+    public Building insertBuilding(Building building);
+
+    public Building getBuilding(int id);
+
+    public Building updateBuilding(Building building) throws SQLException;
+
+    public Building deleteBuilding(int id) throws SQLException;
+
+    public List<Building> getAll() throws SQLException;
+
+    //Building getBuildingByAddress(String building)throws SQLException;
 }

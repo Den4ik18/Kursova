@@ -39,8 +39,7 @@ public class Reservation {
     @JoinColumn(name = "building")
     private Building building;
 
-    public Reservation(int idReservation, Room room, LocalDate bookingData, LocalDate dataOfSettlement, LocalDate dataOfEviction, Customer customer, Building building) {
-        this.idReservation = idReservation;
+    public Reservation(Room room, LocalDate bookingData, LocalDate dataOfSettlement, LocalDate dataOfEviction, Customer customer, Building building) {
         this.room = room;
         this.bookingData = bookingData;
         this.dataOfSettlement = dataOfSettlement;

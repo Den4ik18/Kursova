@@ -23,8 +23,7 @@ public class Organization {
     @JoinColumn(name = "type_of_organization")
     private TypeOfOrganization typeOfOrganization;
 
-    public Organization(int idOrganization, String nameOfOrganization, TypeOfOrganization typeOfOrganization) {
-        this.idOrganization = idOrganization;
+    public Organization(String nameOfOrganization, TypeOfOrganization typeOfOrganization) {
         this.nameOfOrganization = nameOfOrganization;
         this.typeOfOrganization = typeOfOrganization;
     }

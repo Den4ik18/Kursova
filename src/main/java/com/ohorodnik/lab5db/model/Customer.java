@@ -54,8 +54,7 @@ public class Customer {
     @Column(name = "feedback_and_suggestion")
     private String feedbackAndSuggestion;
 
-    public Customer(int idCustomer, String nameOfCustomer, int room, LocalDate bookingDate, LocalDate dataOfSettlement, LocalDate dataOfEviction, Service service, Building building, Boolean isOrganization, Organization organization, String feedbackAndSuggestion) {
-        this.idCustomer = idCustomer;
+    public Customer(String nameOfCustomer, int room, LocalDate bookingDate, LocalDate dataOfSettlement, LocalDate dataOfEviction, Service service, Building building, Boolean isOrganization, Organization organization, String feedbackAndSuggestion) {
         this.nameOfCustomer = nameOfCustomer;
         this.room = room;
         this.bookingDate = bookingDate;

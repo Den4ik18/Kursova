@@ -35,8 +35,7 @@ public class Room {
     @JoinColumn(name = "customer")
     private Customer customer;
 
-    public Room(int idRoom, int numberOfRoom, LocalDate bookingDate, LocalDate dataOfSettlement, LocalDate dataOfEviction, Building building, Customer customer) {
-        this.idRoom = idRoom;
+    public Room(int numberOfRoom, LocalDate bookingDate, LocalDate dataOfSettlement, LocalDate dataOfEviction, Building building, Customer customer) {
         this.numberOfRoom = numberOfRoom;
         this.bookingDate = bookingDate;
         this.dataOfSettlement = dataOfSettlement;

@@ -20,8 +20,7 @@ public class Service {
     @Column(name = "cost_of_service")
     private int costOfService;
 
-    public Service(int idService, String nameOfService, int costOfService) {
-        this.idService = idService;
+    public Service(String nameOfService, int costOfService) {
         this.nameOfService = nameOfService;
         this.costOfService = costOfService;
     }
