@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+
+    <title>Таблиці</title>
+</head>
+<body ng-app = "demo">
+
+
+<div ng-controller="AppCtrl">
+    <!-- Навигация -->
+
+    <ul class="nav nav-tabs" role="tablist">
+
+        <li class="active"><a href="#vkladka1"  aria-controls="vkladka1" role="tab" data-toggle="tab">Броня&nbsp;&nbsp;</a></li>
+        <li><a href="#vkladka2" aria-controls="vkladka2" role="tab" data-toggle="tab">Броня від організацій&nbsp;&nbsp;</a></li>
+        <li><a href="#vkladka3" aria-controls="vkladka3" role="tab" data-toggle="tab">Корпуси&nbsp;&nbsp;</a></li>
+        <li><a href="#vkladka4" aria-controls="vkladka4" role="tab" data-toggle="tab">Клієнти&nbsp;&nbsp;</a></li>
+        <li><a href="#vkladka5" aria-controls="vkladka5" role="tab" data-toggle="tab">Кімнати&nbsp;&nbsp;</a></li>
+        <li><a href="#vkladka6" aria-controls="vkladka6" role="tab" data-toggle="tab">Організації&nbsp;&nbsp;</a></li>
+        <li><a href="#vkladka7" aria-controls="vkladka7" role="tab" data-toggle="tab">Класи готелів&nbsp;&nbsp;</a></li>
+        <li><a href="#vkladka8" aria-controls="vkladka8" role="tab" data-toggle="tab">Послуги&nbsp;&nbsp;</a></li>
+        <li><a href="#vkladka9" aria-controls="vkladka9" role="tab" data-toggle="tab">Тип організації&nbsp;&nbsp;</a></li>
+
+    </ul>
+    <!-- Содержимое вкладок -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="vkladka1"><table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>ІД</th>
+                <th>Номер кімнати</th>
+                <th>Дата бронювання</th>
+                <th>Дата заселення</th>
+                <th>Дата виселення</th>
+                <th>Ім'я клієнта</th>
+                <th>Номер готелю</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat = "item in reservation">
+                <td>{{item.idReservation}}</td>
+                <td>{{item.room.numberOfRoom}}</td>
+                <td>{{item.bookingData}}</td>
+                <td>{{item.dataOfSettlement}}</td>
+                <td>{{item.dataOfEviction}}</td>
+                <td>{{item.customer.nameOfCustomer}}</td>
+                <td>{{item.building.idBuilding}}</td>
+
+            </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="vkladka2">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+
+                    <th>ІД</th>
+                    <th>Поверх</th>
+                    <th>Кількість заброньованих кімнат</th>
+                    <th>Кількість людей</th>
+                    <th>Клас готелю</th>
+                    <th>Список заброньованих кімнат</th>
+                    <th>Дата бронювання</th>
+                    <th>Дата заселення</th>
+                    <th>Дата виселення</th>
+                    <th>Номер готелю</th>
+                    <th>Назва організації</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat = "item in reservationOrganization">
+                    <td>{{item.idReservationOrganization}}</td>
+                    <td>{{item.floor}}</td>
+                    <td>{{item.countOfReservationRooms}}</td>
+                    <td>{{item.totalCountOfPeople}}</td>
+                    <td>{{item.classBuilding.classHotel}}</td>
+                    <td>{{item.listOfReservationRooms}}</td>
+                    <td>{{item.bookingDate}}</td>
+                    <td>{{item.dataOfSettlement}}</td>
+                    <td>{{item.dataOfEviction}}</td>
+                    <td>{{item.building.idBuilding}}</td>
+                    <td>{{item.organization.nameOfOrganization}}</td>
+
+
+
+                </tr>
+
+                </tbody>
+            </table>
+    </div>
+
+
+        <div role="tabpanel" class="tab-pane" id="vkladka3">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+
+                    <th>ІД</th>
+                    <th>Клас готелю</th>
+                    <th>Кількість поверхів</th>
+                    <th>Кількість кімнат</th>
+                    <th>Кількість кімнат на поверсі</th>
+                    <th>Тип кімнати</th>
+                    <th>Адреса готелю</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat = "item in building">
+                    <td>{{item.idBuilding}}</td>
+                    <td>{{item.classHotel}}</td>
+                    <td>{{item.countOfFloor}}</td>
+                    <td>{{item.totalCountOfRooms}}</td>
+                    <td>{{item.countRoomsOnTheFloor}}</td>
+                    <td>{{item.areaOfNumber}}</td>
+                    <td>{{item.addressOfHotelBuilding}}</td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="vkladka4">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>ІД</th>
+                    <th>Ім'я клієнта</th>
+                    <th>Номер кімнати</th>
+                    <th>Дата бронювання</th>
+                    <th>Дата заселення</th>
+                    <th>Дата виселення</th>
+                    <th>Послуга</th>
+                    <th>Номер готелю</th>
+                    <th>Член організації</th>
+                    <th>Назва організації</th>
+                    <th>Відгуки і пропозиції</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr ng-repeat = "item in customer">
+
+                    <td>{{item.idCustomer}}</td>
+                    <td>{{item.nameOfCustomer}}</td>
+                    <td>{{item.room}}</td>
+                    <td>{{item.bookingDate}}</td>
+                    <td>{{item.dataOfSettlement}}</td>
+                    <td>{{item.dataOfEviction}}</td>
+                    <td>{{item.service.nameOfService}}</td>
+                    <td>{{item.building.idBuilding}}</td>
+                    <td>{{item.isOrganization?'pidor':'denis'}}</td>
+                    <td>{{item.organization.nameOfOrganization}} </td>
+                    <td>{{item.feedbackAndSuggestion}}</td>
+
+
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="vkladka5">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+
+                    <th>ІД</th>
+                    <th>Номер кімнати</th>
+                    <th>Дата заселення</th>
+                    <th>Дата висилення</th>
+                    <th>Дата бронювання</th>
+                    <th>Номер готелю</th>
+                    <th>Ім'я клієнта</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat = "item in room">
+
+                    <td>{{item.idRoom}}</td>
+                    <td>{{item.numberOfRoom}} </td>
+                    <td>{{item.bookingDate}}</td>
+                    <td>{{item.dataOfSettlement}}</td>
+                    <td>{{item.dataOfEviction}}</td>
+                    <td>{{item.building.idBuilding}}</td>
+                    <td>{{item.customer.nameOfCustomer}}</td>
+
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="vkladka6">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+
+                    <th>ІД</th>
+                    <th>Назва організації</th>
+                    <th>Характеристика організації</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat = "item in organization">
+                    <td>{{item.idOrganization}}</td>
+                    <td>{{item.nameOfOrganization}} </td>
+                    <td>{{item.typeOfOrganization.organizationCharacteristic}} </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="vkladka7">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+
+                    <th>ІД</th>
+                    <th>Клас готелю</th>
+                    <th>Номер готелю</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat = "item in class">
+                    <td>{{item.idClassHotel}} </td>
+                    <td>{{item.classHotel}} </td>
+                    <td>{{item.building.idBuilding}} </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+        <div role="tabpanel" class="tab-pane" id="vkladka8">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+
+                    <th>ІД</th>
+                    <th>Назва послуги</th>
+                    <th>Вартість послуги</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr ng-repeat = "item in service">
+                    <td>{{item.idService}}</td>
+                    <td>{{item.nameOfService}}</td>
+                    <td>{{item.costOfService}}</td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="vkladka9">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+
+                    <th>ІД</th>
+                    <th>Характеристика організації</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat = "item in type">
+                    <td>{{item.idTypeOfOrganization}} </td>
+                    <td>{{item.organizationCharacteristic}} </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
