@@ -1,8 +1,10 @@
 package com.ohorodnik.lab5db.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "type_of_organization")
@@ -17,11 +19,14 @@ public class TypeOfOrganization {
     private String organizationCharacteristic;
 
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "typeOfOrganization",cascade = CascadeType.REMOVE)
+    private List<Organization> organizations;
 
 
-
-    public TypeOfOrganization(String organizationCharacteristic) {
+    public TypeOfOrganization(String organizationCharacteristic, List<Organization> organizations) {
         this.organizationCharacteristic = organizationCharacteristic;
+        this.organizations = organizations;
     }
 
     public TypeOfOrganization() {
@@ -41,5 +46,13 @@ public class TypeOfOrganization {
 
     public void setOrganizationCharacteristic(String organizationCharacteristic) {
         this.organizationCharacteristic = organizationCharacteristic;
+    }
+
+    public List<Organization> getOrganizations() {
+        return organizations;
+    }
+
+    public void setOrganizations(List<Organization> organizations) {
+        this.organizations = organizations;
     }
 }

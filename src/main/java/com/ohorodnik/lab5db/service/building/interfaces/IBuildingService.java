@@ -9,13 +9,12 @@ import java.util.List;
 public interface IBuildingService {
     public Building insertBuilding(Building building);
 
-    public Building getBuilding(int id);
 
     public Building updateBuilding(Building building) throws SQLException;
 
-    public Building deleteBuilding(int id) throws SQLException;
+    public void deleteBuilding(int id) throws SQLException;
 
-    public List<Building> getAll() throws SQLException;
+    public List<Building> getBuildings() throws SQLException;
 
     //Building getBuildingByAddress(String building)throws SQLException;
 }

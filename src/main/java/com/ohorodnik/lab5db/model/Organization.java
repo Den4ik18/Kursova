@@ -1,9 +1,10 @@
 package com.ohorodnik.lab5db.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.jmx.export.annotation.ManagedOperation;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "organization")
@@ -18,14 +19,23 @@ public class Organization {
     private String nameOfOrganization;
 
 
+    //@OneToMany(mappedBy = "organization",cascade = CascadeType.REMOVE)
+    //List<ReservationOrganization> reservationOrganizations;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "type_of_organization")
+    //@OneToMany(mappedBy = "organization",cascade = CascadeType.REMOVE)
+    //List<Customer> customers;
+
+    @ManyToOne
+    @JoinColumn(name = "type_of_organization",insertable = false,updatable = false)
     private TypeOfOrganization typeOfOrganization;
 
-    public Organization(String nameOfOrganization, TypeOfOrganization typeOfOrganization) {
+    @Column(name = "type_of_organization")
+    private int typeOfOrganization_id;
+
+    public Organization(String nameOfOrganization, TypeOfOrganization typeOfOrganization, int typeOfOrganization_id) {
         this.nameOfOrganization = nameOfOrganization;
         this.typeOfOrganization = typeOfOrganization;
+        this.typeOfOrganization_id = typeOfOrganization_id;
     }
 
     public Organization() {
@@ -54,4 +64,28 @@ public class Organization {
     public void setTypeOfOrganization(TypeOfOrganization typeOfOrganization) {
         this.typeOfOrganization = typeOfOrganization;
     }
+
+    public long getTypeOfOrganization_id() {
+        return typeOfOrganization_id;
+    }
+
+    public void setTypeOfOrganization_id(int typeOfOrganization_id) {
+        this.typeOfOrganization_id = typeOfOrganization_id;
+    }
+
+   /* public List<ReservationOrganization> getReservationOrganizations() {
+        return reservationOrganizations;
+    }
+
+    public void setReservationOrganizations(List<ReservationOrganization> reservationOrganizations) {
+        this.reservationOrganizations = reservationOrganizations;
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
+    }*/
 }
