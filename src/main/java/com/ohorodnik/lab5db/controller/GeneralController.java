@@ -1,6 +1,6 @@
 package com.ohorodnik.lab5db.controller;
 
-import com.ohorodnik.lab5db.DAO.building.impls.BuildingDAOFakeImpl;
+
 import com.ohorodnik.lab5db.model.*;
 import com.ohorodnik.lab5db.repository.*;
 import com.ohorodnik.lab5db.service.building.impls.BuildingServiceImpl;
