@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+</head>
+
+<body ng-app="App">
+Customer
+<div ng-controller="Customer as ctrl" id="block">
+    <div class="container-fluid">
+        <div class="datagrid">
+            <table>
+                <thead>
+                <tr>
+                    <th width="40px">Ідентифікатор</th>
+                    <th>Ім'я клієнта</th>
+                    <th>Номер кімнати</th>
+                    <th>Дата бронювання</th>
+                    <th>Дата заселення</th>
+                    <th>Дата виселення</th>
+                    <th>Послуга</th>
+                    <th>Номер готелю</th>
+                    <th>Член організації</th>
+                    <th>Назва організації</th>
+                    <th>Відгуки і пропозиції</th>
+
+                    <th width="65px">
+                        <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
+                                style="width: 63px" ng-click="ctrl.startInsertCustomer()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in customer">
+                    <td scope="row">{{item.idCustomer}}</td>
+                    <td scope="row">{{item.nameOfCustomer}}</td>
+                    <td scope="row">{{item.room}}</td>
+                    <td scope="row">{{item.bookingDate}}</td>
+                    <td scope="row">{{item.dataOfSettlement}}</td>
+                    <td scope="row">{{item.dataOfEviction}}</td>
+                    <td scope="row">{{item.service.nameOfService}}</td>
+                    <td scope="row">{{item.building.idBuilding}}</td>
+                    <td scope="row">{{item.isOrganization?'Так':'Ні'}}</td>
+                    <td scope="row">{{item.organization.nameOfOrganization}}</td>
+                    <td scope="row">{{item.feedbackAndSuggestion}}</td>
+                    <td scope="row">
+                        <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
+                                ng-click="ctrl.startUpdateCustomer(item.idCustomer,item.nameOfCustomer,item.room,item.bookingDate,item.dataOfSettlement,item.dataOfEviction,item.service.idService,item.building.idBuilding,item.isOrganization,item.organization.idOrganization,item.feedbackAndSuggestion)"
+                                style="width: 30px">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button type="button" class="btn-danger" ng-click="ctrl.delFromCustomer(item.idCustomer)"
+                                style="width: 30px">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--добавление Customer-->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">Добавлення</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Введіть ім'я гостя
+                        <br>
+                        <input type="text" id="NameOfCustomer">
+                        <br>
+                        Вкажіть кімнату
+                        <br>
+                        <input type="text" id="NumberOfRoom">
+                        <br>
+                        Вкажіть дату бронювання
+                        <br>
+                        <input type="date" name="bdaytime" id="BookingDate">
+                        <br>
+                        Вкажіть дату заселення
+                        <br>
+                        <input type="date" name="bdaytime" id="DateOfSettlement">
+                        <br>
+                        Вкажіть дату виселення
+                        <br>
+                        <input type="date" name="bdaytime" id="DateOfEviction">
+                        <br>
+                        Вкажіть послугу
+                        <br>
+                        <select id="NameOfService">
+                        </select>
+                        <br>
+                        Вкажіть номер готелю
+                        <br>
+                        <select id="NumberOfHotel">
+                        </select>
+                        <br>
+                        Із організації?
+                        <br>
+                        <input type="checkbox" class="checkbox" id="IsOrganization">
+                        <br>
+                        Вкажіть назву організації
+                        <br>
+                        <select id="NameOfOrganization">
+                        </select>
+                        <br>
+                        Введіть відгуки або пропозиції
+                        <br>
+                        <input type="text" id="Feedback">
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToCustomer()">Добавити</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--обновленіє Customer-->
+        <div class="modal fade" id="updateModal" tabindex="-2" role="dialog" aria-labelledby="updateModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateModalLabel">Обновлення</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Ідентифікатор
+                        <br>
+                        <div id="IdCustomerUPD"></div>
+                        <br>
+                        Введіть ім'я гостя
+                        <br>
+                        <input type="text" id="NameOfCustomerUPD">
+                        <br>
+                        Вкажіть кімнату
+                        <br>
+                        <input type="text" id="NumberOfRoomUPD">
+                        <br>
+                        Вкажіть дату бронювання
+                        <br>
+                        <input type="date" name="bdaytime" id="BookingDateUPD">
+                        <br>
+                        Вкажіть дату заселення
+                        <br>
+                        <input type="date" name="bdaytime" id="DateOfSettlementUPD">
+                        <br>
+                        Вкажіть дату виселення
+                        <br>
+                        <input type="date" name="bdaytime" id="DateOfEvictionUPD">
+                        <br>
+                        Вкажіть послугу
+                        <br>
+                        <select id="NameOfServiceUPD">
+                        </select>
+                        <br>
+                        Вкажіть номер готелю
+                        <br>
+                        <select id="NumberOfHotelUPD">
+                        </select>
+                        <br>
+                        Із організації?
+                        <br>
+                        <input type="checkbox" class="checkbox" id="IsOrganizationUPD">
+                        <br>
+                        Вкажіть назву організації
+                        <br>
+                        <select id="NameOfOrganizationUPD">
+                        </select>
+                        <br>
+                        Введіть відгуки або пропозиції
+                        <br>
+                        <input type="text" id="FeedbackUPD">
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.updateCustomer()">Обновити</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+</body>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/Customer.js"></script>
+
+</html>

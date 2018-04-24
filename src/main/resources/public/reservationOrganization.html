@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ReservationOrganization</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+</head>
+
+<body ng-app="App">
+ReservationOrganization
+<div ng-controller="ReservationOrganization as ctrl" id="block">
+    <div class="container-fluid">
+        <div class="datagrid">
+            <table>
+                <thead>
+                <tr>
+                    <th width="40px">Ідентифікатор</th>
+                    <th>Поверх</th>
+                    <th>Кількість заброньованих кімнат</th>
+                    <th>Кількість людей</th>
+                    <th>Клас готелю</th>
+                    <th>Список заброньованих кімнат</th>
+                    <th>Дата бронювання</th>
+                    <th>Дата заселення</th>
+                    <th>Дата виселення</th>
+                    <th>Номер готелю</th>
+                    <th>Назва організації</th>
+
+                    <th width="65px">
+                        <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
+                                style="width: 63px" ng-click="ctrl.startInsertReservationOrganization()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in reservationByOrganization">
+                    <td scope="row">{{item.idReservationOrganization}}</td>
+                    <td scope="row">{{item.floor}}</td>
+                    <td scope="row">{{item.countOfReservationRooms}}</td>
+                    <td scope="row">{{item.totalCountOfPeople}}</td>
+                    <td scope="row">{{item.classBuilding.classHotel}}</td>
+                    <td scope="row">{{item.listOfReservationRooms}}</td>
+                    <td scope="row">{{item.bookingDate}}</td>
+                    <td scope="row">{{item.dataOfSettlement}}</td>
+                    <td scope="row">{{item.dataOfEviction}}</td>
+                    <td scope="row">{{item.building.idBuilding}}</td>
+                    <td scope="row">{{item.organization.nameOfOrganization}}</td>
+                    <td scope="row">
+                        <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
+                                ng-click="ctrl.startUpdateReservationOrganization(item.idReservationOrganization,item.floor,item.countOfReservationRooms,item.totalCountOfPeople,item.classBuilding.idClassHotel,item.listOfReservationRooms,item.bookingDate,item.dataOfSettlement,item.dataOfEviction,item.building.idBuilding,item.organization.idOrganization)"
+                                style="width: 30px">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button type="button" class="btn-danger" ng-click="ctrl.delFromReservationOrganization(item.idReservationOrganization)"
+                                style="width: 30px">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--добавление ReservationOrganization-->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">Добавлення</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Введіть поверх
+                        <br>
+                        <input type="text" id="Floor">
+                        <br>
+                        Введіть кількість заброньованих кімнат
+                        <br>
+                        <input type="text" id="СountOfReservationRooms">
+                        <br>
+                        Введіть кількість клієнтів
+                        <br>
+                        <input type="text" id="TotalCountOfPeople">
+                        <br>
+                        Вкажіть клас готелю
+                        <br>
+                        <select id="ClassOfHotel">
+                        </select>
+                        <br>
+                        Введіть список заброньованих кімнат
+                        <br>
+                        <input type="text" id="ListOfReservationRooms">
+                        <br>
+                        Вкажіть дату бронювання
+                        <br>
+                        <input type="date" name="bdaytime" id="BookingDate">
+                        <br>
+                        Вкажіть дату заселення
+                        <br>
+                        <input type="date" name="bdaytime" id="DateOfSettlement">
+                        <br>
+                        Вкажіть дату виселення
+                        <br>
+                        <input type="date" name="bdaytime" id="DateOfEviction">
+                        <br>
+                        Вкажіть готель
+                        <br>
+                        <select id="NumberOfHotel">
+                        </select>
+                        <br>
+                        Вкажіть назву організації
+                        <br>
+                        <select id="NameOfOrganization">
+                        </select>
+                        <br>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.insertToReservationOrganization()">Добавити</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--обновленіє ReservationOrganization-->
+        <div class="modal fade" id="updateModal" tabindex="-2" role="dialog" aria-labelledby="updateModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateModalLabel">Обновлення</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Ідентифікатор
+                        <br>
+                        <div id="IdReservationOrganizationUPD"></div>
+                        <br>
+                        Введіть поверх
+                        <br>
+                        <input type="text" id="FloorUPD">
+                        <br>
+                        Введіть кількість заброньованих кімнат
+                        <br>
+                        <input type="text" id="СountOfReservationRoomsUPD">
+                        <br>
+                        Введіть кількість клієнтів
+                        <br>
+                        <input type="text" id="TotalCountOfPeopleUPD">
+                        <br>
+                        Вкажіть клас готелю
+                        <br>
+                        <select id="ClassOfHotelUPD">
+                        </select>
+                        <br>
+                        Введіть список заброньованих кімнат
+                        <br>
+                        <input type="text" id="ListOfReservationRoomsUPD">
+                        <br>
+                        Вкажіть дату бронювання
+                        <br>
+                        <input type="date" name="bdaytime" id="BookingDateUPD">
+                        <br>
+                        Вкажіть дату заселення
+                        <br>
+                        <input type="date" name="bdaytime" id="DateOfSettlementUPD">
+                        <br>
+                        Вкажіть дату виселення
+                        <br>
+                        <input type="date" name="bdaytime" id="DateOfEvictionUPD">
+                        <br>
+                        Вкажіть готель
+                        <br>
+                        <select id="NumberOfHotelUPD">
+                        </select>
+                        <br>
+                        Вкажіть назву організації
+                        <br>
+                        <select id="NameOfOrganizationUPD">
+                        </select>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.updateReservationOrganization()">Обновити</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+</body>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/ReservationOrganization.js"></script>
+
+</html>
