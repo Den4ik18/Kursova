@@ -68,7 +68,7 @@ public class Building {
         this.reservationOrganizations = reservationOrganizations;
         this.rooms = rooms;
     }
-
+////
     public List<Room> getRooms() {
         return rooms;
     }
