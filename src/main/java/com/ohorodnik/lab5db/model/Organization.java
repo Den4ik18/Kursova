@@ -1,5 +1,6 @@
 package com.ohorodnik.lab5db.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.jmx.export.annotation.ManagedOperation;
 
@@ -32,10 +33,36 @@ public class Organization {
     @Column(name = "type_of_organization")
     private int typeOfOrganization_id;
 
-    public Organization(String nameOfOrganization, TypeOfOrganization typeOfOrganization, int typeOfOrganization_id) {
+    @JsonIgnore
+    @OneToMany(mappedBy = "organization",cascade = CascadeType.REMOVE)
+    private List<Customer> customer;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "organization",cascade = CascadeType.REMOVE)
+    private List<ReservationOrganization> reservationOrganizations;
+
+    public Organization(String nameOfOrganization, TypeOfOrganization typeOfOrganization, int typeOfOrganization_id, List<Customer> customer, List<ReservationOrganization> reservationOrganizations) {
         this.nameOfOrganization = nameOfOrganization;
         this.typeOfOrganization = typeOfOrganization;
         this.typeOfOrganization_id = typeOfOrganization_id;
+        this.customer = customer;
+        this.reservationOrganizations = reservationOrganizations;
+    }
+
+    public List<Customer> getCustomer() {
+        return customer;//
+    }
+
+    public void setCustomer(List<Customer> customer) {
+        this.customer = customer;//
+    }
+
+    public List<ReservationOrganization> getReservationOrganizations() {
+        return reservationOrganizations;
+    }
+
+    public void setReservationOrganizations(List<ReservationOrganization> reservationOrganizations) {
+        this.reservationOrganizations = reservationOrganizations;
     }
 
     public Organization() {

@@ -33,39 +33,75 @@ public class Customer {
     @Column(name = "data_of_settlement")
     private LocalDate dataOfSettlement;
 
+    //@JsonIgnore
+    //@OneToOne(mappedBy = "customer", fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
+    //private Reservation reservation;
+
     @Column(name = "data_of_eviction")
     private LocalDate dataOfEviction;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "service")
+    @ManyToOne
+    @JoinColumn(name = "service",insertable = false,updatable = false)
     private Service service;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "building")
+    @Column(name = "service")
+    private int service_id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "building",insertable = false,updatable = false)
     private Building building;
+
+    @Column(name = "building")
+    private int building_id;
 
     @Column(name = "organization")
     private Boolean isOrganization;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_organization")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_organization",insertable = false,updatable = false)
     private Organization organization;
+
+    @Column(name = "id_organization")
+    private Integer organization_id;
 
     @Column(name = "feedback_and_suggestion")
     private String feedbackAndSuggestion;
 
-    public Customer(String nameOfCustomer, int room, LocalDate bookingDate, LocalDate dataOfSettlement, LocalDate dataOfEviction, Service service, Building building, Boolean isOrganization, Organization organization, String feedbackAndSuggestion) {
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.REMOVE)
+    private List<Room> rooms;
+
+    public Customer(String nameOfCustomer, int room, LocalDate bookingDate, LocalDate dataOfSettlement, LocalDate dataOfEviction, Service service, int service_id, Building building, int building_id, Boolean isOrganization, Organization organization, Integer organization_id, String feedbackAndSuggestion, List<Room> rooms) {
         this.nameOfCustomer = nameOfCustomer;
         this.room = room;
         this.bookingDate = bookingDate;
         this.dataOfSettlement = dataOfSettlement;
         this.dataOfEviction = dataOfEviction;
         this.service = service;
+        this.service_id = service_id;
         this.building = building;
+        this.building_id = building_id;
         this.isOrganization = isOrganization;
         this.organization = organization;
+        this.organization_id = organization_id;
         this.feedbackAndSuggestion = feedbackAndSuggestion;
+        this.rooms = rooms;
     }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
+    /* public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }*/
 
     public Customer() {
     }
@@ -100,6 +136,30 @@ public class Customer {
     public void setList(List<Room> list) {
         this.list = list;
     }*/
+
+    public int getService_id() {
+        return service_id;
+    }
+
+    public void setService_id(int service_id) {
+        this.service_id = service_id;
+    }
+
+    public int getBuilding_id() {
+        return building_id;
+    }
+
+    public void setBuilding_id(int building_id) {
+        this.building_id = building_id;
+    }
+
+    public Integer getOrganization_id() {
+        return organization_id;
+    }
+
+    public void setOrganization_id(Integer organization_id) {
+        this.organization_id = organization_id;
+    }
 
     public LocalDate getBookingDate() {
         return bookingDate;

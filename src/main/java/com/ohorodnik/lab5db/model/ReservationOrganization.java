@@ -26,9 +26,12 @@ public class ReservationOrganization {
     private int totalCountOfPeople;
 
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "class")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "class",insertable = false,updatable = false)
     private ClassBuilding classBuilding;
+
+    @Column(name = "class")
+    private int class_id;
 
     @Column(name = "list_of_reservation_rooms")
     private String listOfReservationRooms;
@@ -43,25 +46,58 @@ public class ReservationOrganization {
     private LocalDate dataOfEviction;
 
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "building")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "building",insertable = false,updatable = false)
     private Building building;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "organization")
+    @Column(name = "building")
+    private int building_id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "organization",insertable = false,updatable = false)
     private Organization organization;
 
-    public ReservationOrganization(int floor, int countOfReservationRooms, int totalCountOfPeople, ClassBuilding classBuilding, String listOfReservationRooms, LocalDate bookingDate, LocalDate dataOfSettlement, LocalDate dataOfEviction, Building building, Organization organization) {
+    @Column(name = "organization")
+    private int organization_id;
+
+    public ReservationOrganization(int floor, int countOfReservationRooms, int totalCountOfPeople, ClassBuilding classBuilding, int class_id, String listOfReservationRooms, LocalDate bookingDate, LocalDate dataOfSettlement, LocalDate dataOfEviction, Building building, int building_id, Organization organization, int organization_id) {
         this.floor = floor;
         this.countOfReservationRooms = countOfReservationRooms;
         this.totalCountOfPeople = totalCountOfPeople;
         this.classBuilding = classBuilding;
+        this.class_id = class_id;
         this.listOfReservationRooms = listOfReservationRooms;
         this.bookingDate = bookingDate;
         this.dataOfSettlement = dataOfSettlement;
         this.dataOfEviction = dataOfEviction;
         this.building = building;
+        this.building_id = building_id;
         this.organization = organization;
+        this.organization_id = organization_id;
+    }
+
+    public int getClass_id() {
+        return class_id;
+    }
+
+    public void setClass_id(int class_id) {
+        this.class_id = class_id;
+    }
+
+    public int getBuilding_id() {
+        return building_id;
+    }
+
+    public void setBuilding_id(int building_id) {
+        this.building_id = building_id;
+    }
+
+    public int getOrganization_id() {
+        return organization_id;
+    }
+
+    public void setOrganization_id(int organization_id) {
+        this.organization_id = organization_id;
     }
 
     public ReservationOrganization() {

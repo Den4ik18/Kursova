@@ -78,7 +78,7 @@ public class GeneralController {
     //Test Method
     @RequestMapping("/insert")
     public String getInsert(){
-        buildingRepository.save(new Building(3,3,3,4,"fgffgfg","gfgf"));
+        //buildingRepository.save(new Building(3,3,3,4,"fgffgfg","gfgf"));
 
         return "Insert Fake Database!";
     }

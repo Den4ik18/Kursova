@@ -16,9 +16,12 @@ public class Reservation {
     @Column(name = "id_reservation")
     private int idReservation;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "number_of_room")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "number_of_room",insertable = false,updatable = false)
     private Room room;
+
+    @Column(name = "number_of_room")
+    private int room_id;
 
     @Column(name = "booking_date")
     private LocalDate bookingData;
@@ -30,22 +33,30 @@ public class Reservation {
     private LocalDate dataOfEviction;
 
     //@JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
-    @JoinColumn(name = "customer")
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customer",insertable = false, updatable = false)
     private Customer customer;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "building")
+    @Column(name = "customer")
+    private int customer_id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "building",insertable = false,updatable = false)
     private Building building;
 
-    public Reservation(Room room, LocalDate bookingData, LocalDate dataOfSettlement, LocalDate dataOfEviction, Customer customer, Building building) {
+    @Column(name = "building")
+    private int building_id;
+
+    public Reservation(Room room, int room_id, LocalDate bookingData, LocalDate dataOfSettlement, LocalDate dataOfEviction, Customer customer, int customer_id, Building building, int building_id) {
         this.room = room;
+        this.room_id = room_id;
         this.bookingData = bookingData;
         this.dataOfSettlement = dataOfSettlement;
         this.dataOfEviction = dataOfEviction;
         this.customer = customer;
+        this.customer_id = customer_id;
         this.building = building;
+        this.building_id = building_id;
     }
 
     public Reservation() {
@@ -65,6 +76,14 @@ public class Reservation {
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    public int getRoom_id() {
+        return room_id;
+    }
+
+    public void setRoom_id(int room_id) {
+        this.room_id = room_id;
     }
 
     public LocalDate getBookingData() {
@@ -99,11 +118,27 @@ public class Reservation {
         this.customer = customer;
     }
 
+    public int getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
+    }
+
     public Building getBuilding() {
         return building;
     }
 
     public void setBuilding(Building building) {
         this.building = building;
+    }
+
+    public int getBuilding_id() {
+        return building_id;
+    }
+
+    public void setBuilding_id(int building_id) {
+        this.building_id = building_id;
     }
 }
