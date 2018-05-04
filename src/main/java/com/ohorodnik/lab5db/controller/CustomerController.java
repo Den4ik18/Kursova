@@ -10,15 +10,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
-    //@Autowired
-    //CustomerServiceImpl organizationService;
+
 
     @Autowired
     CustomerRepository customerRepository;
 
     @RequestMapping("/get")
     public List<Customer> getCustomer()  {
-        //return organizationService.getCustomers();
         return customerRepository.findAll();
     }
 
