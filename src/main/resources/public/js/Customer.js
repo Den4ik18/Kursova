@@ -63,7 +63,7 @@ App.controller('Customer', function ($http, $scope) {
         var indexNumberOfHotel = document.getElementById("NumberOfHotel").selectedIndex;
         var building_id = document.getElementById("NumberOfHotel").options[indexNumberOfHotel].value;
 
-        var isOrganization = document.getElementById("IsOrganization").checked;
+
         var indexNameOfOrganization = document.getElementById("NameOfOrganization").selectedIndex;
         var organization_id = document.getElementById("NameOfOrganization").options[indexNameOfOrganization].value;
         var feedback = document.getElementById("Feedback").value;
@@ -80,7 +80,6 @@ App.controller('Customer', function ($http, $scope) {
                 dataOfEviction: dataOfEviction,
                 service_id: service_id,
                 building_id: building_id,
-                isOrganization: isOrganization,
                 organization_id: organization_id,
                 feedbackAndSuggestion:feedback
             }
@@ -94,7 +93,7 @@ App.controller('Customer', function ($http, $scope) {
         })
     };
 
-    this.startUpdateCustomer = function startUpdate(idCustomer,nameOfCustomer,room,bookingDate,dataOfSettlement,dataOfEviction,service,building,isOrganization,organization,feedbackAndSuggestion) {
+    this.startUpdateCustomer = function startUpdate(idCustomer,nameOfCustomer,room,bookingDate,dataOfSettlement,dataOfEviction,service,building,organization,feedbackAndSuggestion) {
 
         $http.get('/building/get').then(function (response) {
             var buildings = response.data;
@@ -147,7 +146,6 @@ App.controller('Customer', function ($http, $scope) {
         document.getElementById("BookingDateUPD").value = bookingDate;
         document.getElementById("DateOfSettlementUPD").value = dataOfSettlement;
         document.getElementById("DateOfEvictionUPD").value = dataOfEviction;
-        document.getElementById("IsOrganizationUPD").checked = isOrganization;
         document.getElementById("FeedbackUPD").value = feedbackAndSuggestion;
 
     };
@@ -167,7 +165,6 @@ App.controller('Customer', function ($http, $scope) {
         var indexNumberOfHotel = document.getElementById("NumberOfHotelUPD").selectedIndex;
         var building_id = document.getElementById("NumberOfHotelUPD").options[indexNumberOfHotel].value;
 
-        var isOrganization = document.getElementById("IsOrganizationUPD").checked;
         var indexNameOfOrganization = document.getElementById("NameOfOrganizationUPD").selectedIndex;
         var organization_id = document.getElementById("NameOfOrganizationUPD").options[indexNameOfOrganization].value;
         var feedback = document.getElementById("FeedbackUPD").value;
@@ -184,7 +181,6 @@ App.controller('Customer', function ($http, $scope) {
                 dataOfEviction: dataOfEviction,
                 service_id: service_id,
                 building_id: building_id,
-                isOrganization: isOrganization,
                 organization_id: organization_id,
                 feedbackAndSuggestion:feedback
             }

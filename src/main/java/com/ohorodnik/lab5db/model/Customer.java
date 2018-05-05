@@ -54,8 +54,8 @@ public class Customer {
     @Column(name = "building")
     private int building_id;
 
-    @Column(name = "organization")
-    private Boolean isOrganization;
+    /*@Column(name = "organization")
+    private Boolean isOrganization;*/
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_organization",insertable = false,updatable = false)
@@ -71,7 +71,7 @@ public class Customer {
     @OneToMany(mappedBy = "customer",cascade = CascadeType.REMOVE)
     private List<Room> rooms;
 
-    public Customer(String nameOfCustomer, int room, LocalDate bookingDate, LocalDate dataOfSettlement, LocalDate dataOfEviction, Service service, int service_id, Building building, int building_id, Boolean isOrganization, Organization organization, Integer organization_id, String feedbackAndSuggestion, List<Room> rooms) {
+    public Customer(String nameOfCustomer, int room, LocalDate bookingDate, LocalDate dataOfSettlement, LocalDate dataOfEviction, Service service, int service_id, Building building, int building_id, Organization organization, Integer organization_id, String feedbackAndSuggestion, List<Room> rooms) {
         this.nameOfCustomer = nameOfCustomer;
         this.room = room;
         this.bookingDate = bookingDate;
@@ -81,7 +81,6 @@ public class Customer {
         this.service_id = service_id;
         this.building = building;
         this.building_id = building_id;
-        this.isOrganization = isOrganization;
         this.organization = organization;
         this.organization_id = organization_id;
         this.feedbackAndSuggestion = feedbackAndSuggestion;
@@ -201,9 +200,9 @@ public class Customer {
         this.building = building;
     }
 
-    public Boolean getisOrganization() {
+   /* public Boolean getisOrganization() {
         return isOrganization;
-    }
+    }*/
 
     public String getFeedbackAndSuggestion() {
         return feedbackAndSuggestion;
@@ -213,9 +212,9 @@ public class Customer {
         this.feedbackAndSuggestion = feedbackAndSuggestion;
     }
 
-    public void setisOrganization(Boolean isOrganization) {
+    /*public void setisOrganization(Boolean isOrganization) {
         isOrganization = isOrganization;
-    }
+    }*/
 
     public Organization getOrganization() {
         return organization;

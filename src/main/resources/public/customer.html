@@ -28,7 +28,6 @@ Customer
                     <th>Дата виселення</th>
                     <th>Послуга</th>
                     <th>Номер готелю</th>
-                    <th>Член організації</th>
                     <th>Назва організації</th>
                     <th>Відгуки і пропозиції</th>
 
@@ -50,12 +49,11 @@ Customer
                     <td scope="row">{{item.dataOfEviction}}</td>
                     <td scope="row">{{item.service.nameOfService}}</td>
                     <td scope="row">{{item.building.idBuilding}}</td>
-                    <td scope="row">{{item.isOrganization?'Так':'Ні'}}</td>
                     <td scope="row">{{item.organization.nameOfOrganization}}</td>
                     <td scope="row">{{item.feedbackAndSuggestion}}</td>
                     <td scope="row">
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.startUpdateCustomer(item.idCustomer,item.nameOfCustomer,item.room,item.bookingDate,item.dataOfSettlement,item.dataOfEviction,item.service.idService,item.building.idBuilding,item.isOrganization,item.organization.idOrganization,item.feedbackAndSuggestion)"
+                                ng-click="ctrl.startUpdateCustomer(item.idCustomer,item.nameOfCustomer,item.room,item.bookingDate,item.dataOfSettlement,item.dataOfEviction,item.service.idService,item.building.idBuilding,item.organization.idOrganization,item.feedbackAndSuggestion)"
                                 style="width: 30px">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
@@ -110,10 +108,6 @@ Customer
                         <br>
                         <select id="NumberOfHotel">
                         </select>
-                        <br>
-                        Із організації?
-                        <br>
-                        <input type="checkbox" class="checkbox" id="IsOrganization">
                         <br>
                         Вкажіть назву організації
                         <br>
@@ -178,10 +172,6 @@ Customer
                         <br>
                         <select id="NumberOfHotelUPD">
                         </select>
-                        <br>
-                        Із організації?
-                        <br>
-                        <input type="checkbox" class="checkbox" id="IsOrganizationUPD">
                         <br>
                         Вкажіть назву організації
                         <br>
