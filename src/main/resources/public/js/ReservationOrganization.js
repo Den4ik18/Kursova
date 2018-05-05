@@ -1,7 +1,11 @@
 var App = angular.module('App', []);
 
 App.controller('ReservationOrganization', function ($http, $scope) {
+    var time = performance.now();
     $http.get('/reservationByOrganization/get').then(function (response) {
+        time = performance.now() - time;
+        console.log('Час виконанння = ', time);
+        alert("-----");
         $scope.reservationByOrganization = response.data;
         console.log(response);
     });
@@ -82,7 +86,11 @@ App.controller('ReservationOrganization', function ($http, $scope) {
                 organization_id:nameOfOrganization_id
             }
         };
+        var time = performance.now();
         $http(req).then(function (resp) {
+            time = performance.now() - time;
+            console.log('Додавання новго запису = ', time);
+            alert("-----");
             window.location.reload();
         })
     };
@@ -185,13 +193,21 @@ App.controller('ReservationOrganization', function ($http, $scope) {
                 organization_id:nameOfOrganization_id
             }
         };
+        var time = performance.now();
         $http(req).then(function (resp) {
+            time = performance.now() - time;
+            console.log('Оновлення = ', time);
+            alert("--------");
             window.location.reload();
         })
     };
 
     this.delFromReservationOrganization = function del(id) {
+        var time = performance.now();
         $http.get('/reservationByOrganization/del?id=' + id).then(function () {
+            time = performance.now() - time;
+            console.log('Видалення = ', time);
+            alert("--------");
             window.location.reload();
         });
     };

@@ -1,7 +1,11 @@
 var App = angular.module('App', []);
 
 App.controller('Customer', function ($http, $scope) {
+    var time = performance.now();
     $http.get('/customer/get').then(function (response) {
+        time = performance.now() - time;
+        console.log('Час виконанння = ', time);
+        alert("-----");
         $scope.customer = response.data;
         console.log(response);
     });
@@ -81,7 +85,11 @@ App.controller('Customer', function ($http, $scope) {
                 feedbackAndSuggestion:feedback
             }
         };
+        var time = performance.now();
         $http(req).then(function (resp) {
+            time = performance.now() - time;
+            console.log('Додавання новго запису = ', time);
+            alert("-----");
             window.location.reload();
         })
     };
@@ -181,13 +189,21 @@ App.controller('Customer', function ($http, $scope) {
                 feedbackAndSuggestion:feedback
             }
         };
+        var time = performance.now();
         $http(req).then(function (resp) {
+            time = performance.now() - time;
+            console.log('Оновлення = ', time);
+            alert("--------");
             window.location.reload();
         })
     };
 
     this.delFromCustomer = function del(id) {
+        var time = performance.now();
         $http.get('/customer/del?id=' + id).then(function () {
+            time = performance.now() - time;
+            console.log('Видалення = ', time);
+            alert("--------");
             window.location.reload();
         });
     };

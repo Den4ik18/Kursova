@@ -1,7 +1,11 @@
 var App = angular.module('App', []);
 
 App.controller('Organization', function ($http, $scope) {
+    var time = performance.now();
     $http.get('/organization/get').then(function (response) {
+        time = performance.now() - time;
+        console.log('Час виконанння = ', time);
+        alert("-----");
         $scope.organization = response.data;
 
     });
@@ -38,7 +42,11 @@ App.controller('Organization', function ($http, $scope) {
                 typeOfOrganization_id: characteristic
             }
         };
+        var time = performance.now();
         $http(req).then(function (resp) {
+            time = performance.now() - time;
+            console.log('Додавання новго запису = ', time);
+            alert("-----");
             window.location.reload();
         })
     };
@@ -80,13 +88,21 @@ App.controller('Organization', function ($http, $scope) {
 
             }
         };
+        var time = performance.now();
         $http(req).then(function (resp) {
+            time = performance.now() - time;
+            console.log('Оновлення = ', time);
+            alert("--------");
             window.location.reload();
         })
     };
 
     this.delFromOrganization = function del(id) {
+        var time = performance.now();
         $http.get('/organization/del?id=' + id).then(function () {
+            time = performance.now() - time;
+            console.log('Оновлення = ', time);
+            alert("--------");
             window.location.reload();
         });
     };
