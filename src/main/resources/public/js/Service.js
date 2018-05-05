@@ -54,10 +54,10 @@ App.controller('Service',function ($http,$scope) {
 
             }
         };
-        console.log(req);
+        //console.log(req);
         var time = performance.now();
         $http(req).then(function (resp) {
-            console.log(resp);
+            //console.log(resp);
             time = performance.now() - time;
             console.log('Оновлення = ', time);
             alert("--------");
