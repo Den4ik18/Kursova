@@ -1,11 +1,11 @@
 var App = angular.module('App',[]);
 
 App.controller('Building',function ($http,$scope) {
-    var time = performance.now();
+    //var time = performance.now();
     $http.get('/building/get').then(function (response){
-        time = performance.now() - time;
-        console.log('Час виконанння = ', time);
-        alert("-----");
+        //time = performance.now() - time;
+        //console.log('Час виконанння = ', time);
+        //alert("-----");
         $scope.building=response.data;
         //console.log(response);
     });
@@ -30,12 +30,12 @@ App.controller('Building',function ($http,$scope) {
             }
         };
         //console.log(req);
-        var time = performance.now();
+        //var time = performance.now();
         $http(req).then(function (resp) {
             //console.log(resp);
-            time = performance.now() - time;
+            /*time = performance.now() - time;
             console.log('Додавання нового запису = ', time);
-            alert("--------");
+            alert("--------");*/
             window.location.reload();
         })
     };
@@ -72,22 +72,22 @@ App.controller('Building',function ($http,$scope) {
             }
         };
         //console.log(req);
-        var time = performance.now();
+        //var time = performance.now();
         $http(req).then(function (resp) {
             //console.log(resp);
-            time = performance.now() - time;
+            /*time = performance.now() - time;
             console.log('Оновлення = ', time);
-            alert("--------");
+            alert("--------");*/
             window.location.reload();
         })
     };
 
     this.delFromBuilding = function del(id) {
-        var time = performance.now();
+        //var time = performance.now();
         $http.get('/building/del?id=' + id).then(function () {
-            time = performance.now() - time;
+            /*time = performance.now() - time;
             console.log('Видалення = ', time);
-            alert("--------");
+            alert("--------");*/
             window.location.reload();
         });
     };

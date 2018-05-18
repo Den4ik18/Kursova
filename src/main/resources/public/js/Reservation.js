@@ -1,11 +1,11 @@
 var App = angular.module('App', []);
 
 App.controller('Reservation', function ($http, $scope) {
-    var time = performance.now();
+    //var time = performance.now();
     $http.get('/reservation/get').then(function (response) {
-        time = performance.now() - time;
+        /*time = performance.now() - time;
         console.log('Час виконанння = ', time);
-        alert("-----");
+        alert("-----");*/
         $scope.reservation = response.data;
         //console.log(response);
     });
@@ -76,11 +76,11 @@ App.controller('Reservation', function ($http, $scope) {
                 building_id: building_id
             }
         };
-        var time = performance.now();
+        //var time = performance.now();
         $http(req).then(function (resp) {
-            time = performance.now() - time;
+            /*time = performance.now() - time;
             console.log('Додавання новго запису = ', time);
-            alert("-----");
+            alert("-----");*/
             window.location.reload();
         })
     };
@@ -168,21 +168,21 @@ App.controller('Reservation', function ($http, $scope) {
                 building_id: building_id
             }
         };
-        var time = performance.now();
+        //var time = performance.now();
         $http(req).then(function (resp) {
-            time = performance.now() - time;
+            /*time = performance.now() - time;
             console.log('Оновлення = ', time);
-            alert("--------");
+            alert("--------");*/
             window.location.reload();
         })
     };
 
     this.delFromReservation = function del(id) {
-        var time = performance.now();
+        //var time = performance.now();
         $http.get('/reservation/del?id=' + id).then(function () {
-            time = performance.now() - time;
+            /*time = performance.now() - time;
             console.log('Видалення = ', time);
-            alert("--------");
+            alert("--------");*/
             window.location.reload();
         });
     };

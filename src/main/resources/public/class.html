@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>ClassBuilding</title>
+    <title>Class building</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -13,9 +13,47 @@
 </head>
 
 <body ng-app="App">
-ClassBuilding
 <div ng-controller="ClassBuilding as ctrl" id="block">
     <div class="container-fluid">
+        <div class="datagrid">
+            <table>
+                <tbody>
+                <tr>
+                    <th class="my-th" >
+                        <a href="\building.html" style = "color: white">Building</a>
+                    </th>
+                    <th  class="my-th-selected">
+                        <a style="color: white">Class hotel</a>
+                    </th>
+                    <th  class="my-th">
+                        <a href="\customer.html" style="color: white">Customer</a>
+                    </th>
+                    <th class="my-th">
+                        <a href="\organization.html" style="color: white">Organization</a>
+                    </th>
+                    <th  class="my-th">
+                        <a href="\reservation.html" style="color: white">Reservation</a>
+                    </th>
+
+                </tr>
+                <tr>
+                    <th class="my-th">
+                        <a href="\reservationOrganization.html" style="color: white">Reservation by organization</a>
+                    </th>
+                    <th  class="my-th">
+                        <a href="\room.html" style="color: white">Room</a>
+                    </th>
+                    <th  class="my-th">
+                        <a href="\service.html" style="color: white">Service</a>
+                    </th>
+                    <th  class="my-th">
+                        <a href="\typeOfOrganization.html" style="color: white">Type of organization</a>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-heading"> Class hotel </div>
         <div class="datagrid">
             <table>
                 <thead>
