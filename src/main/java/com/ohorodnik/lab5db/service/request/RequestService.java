@@ -10,6 +10,9 @@ import com.ohorodnik.lab5db.requestModel.AmountOrganization;
 import com.ohorodnik.lab5db.requestModel.AmountRoom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
 
 
 import java.time.LocalDate;
@@ -145,5 +148,47 @@ public class RequestService implements IRequestService {
     public List<ReservationOrganization> volumeOfReservedRoomsAndTheirCharacteristicsByTheIndicatedFirmDuringTheSpecifiedPeriod(int organization, LocalDate date1, LocalDate date2) {
         return reservationOrganizationRepository.volumeOfReservedRoomsAndTheirCharacteristicsByTheIndicatedFirmDuringTheSpecifiedPeriod(organization,date1,date2);
     }
+
+    @Override
+    public List<Customer> listOfUnsatisfiedCustomerAndTheirComplaints() {
+        return customerRepository.listOfUnsatisfiedCustomerAndTheirComplaints();
+    }
+
+    @Override
+    public List<Customer> informationAboutCustomerWithSpecifiedRoom(int room) {
+        return customerRepository.informationAboutCustomerWithSpecifiedRoom(room);
+    }
+
+    @Override
+    public List<ReservationOrganization> informationAboutOrganizationWithWhichContractsForBookingRoomsForTheSpecifiedPeriod(LocalDate date1, LocalDate date2) {
+        return reservationOrganizationRepository.informationAboutOrganizationWithWhichContractsForBookingRoomsForTheSpecifiedPeriod(date1,date2);
+    }
+
+    @Override
+    public List<Customer> informationAboutCustomersWhoVisitThehotelMostOften() {
+        return customerRepository.informationAboutCustomersWhoVisitThehotelMostOften(new PageRequest(0, 1));
+    }
+
+    @Override
+    public List<Customer> informationAboutTheClientsWhoVisitTheHotelInGeneralAndEachCaseSeparately(int building) {
+        return customerRepository.informationAboutTheClientsWhoVisitTheHotelInGeneralAndEachCaseSeparately(building,new PageRequest(0, 1));
+    }
+
+    @Override
+    public List<Customer> informationAboutNewCustomersWithinTheSpecifiedPeriod(LocalDate date1, LocalDate date2) {
+        return customerRepository.informationAboutNewCustomersWithinTheSpecifiedPeriod(date1,date2);
+    }
+
+    @Override
+    public List<Customer> informationAboutTheSpecifiedCustomer(int name) {
+        return customerRepository.informationAboutTheSpecifiedCustomer(name);
+
+    }
+
+    @Override
+    public List<Room> informationAboutWhoWasBusyTheSpecifiedNumberDuringTheSpecifiedPeriod(int room) {
+        return roomRepository.informationAboutWhoWasBusyTheSpecifiedNumberDuringTheSpecifiedPeriod(room);
+    }
+
 
 }

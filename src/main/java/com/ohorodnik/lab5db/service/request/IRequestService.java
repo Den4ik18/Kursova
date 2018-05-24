@@ -7,6 +7,7 @@ import com.ohorodnik.lab5db.model.Room;
 import com.ohorodnik.lab5db.requestModel.AmountCustomer;
 import com.ohorodnik.lab5db.requestModel.AmountOrganization;
 import com.ohorodnik.lab5db.requestModel.AmountRoom;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
 
@@ -45,5 +46,32 @@ public interface IRequestService {
 
     //7
     List<ReservationOrganization> volumeOfReservedRoomsAndTheirCharacteristicsByTheIndicatedFirmDuringTheSpecifiedPeriod(int organization, LocalDate date1,LocalDate date2);
+
+    //8
+    List<Customer>listOfUnsatisfiedCustomerAndTheirComplaints();
+
+    //9
+    List<Customer> informationAboutCustomerWithSpecifiedRoom(int room);
+
+    //11
+    List<ReservationOrganization>informationAboutOrganizationWithWhichContractsForBookingRoomsForTheSpecifiedPeriod(LocalDate date1,LocalDate date2 );
+
+    //12
+    List<Customer>informationAboutCustomersWhoVisitThehotelMostOften();
+
+    //12.1
+    List<Customer>informationAboutTheClientsWhoVisitTheHotelInGeneralAndEachCaseSeparately(int building);
+
+   //13.1
+   List<Customer>informationAboutNewCustomersWithinTheSpecifiedPeriod( LocalDate date1,LocalDate date2);
+
+   //13.2
+   List<Customer>informationAboutTheSpecifiedCustomer(int name);
+
+   //14
+   List<Room>informationAboutWhoWasBusyTheSpecifiedNumberDuringTheSpecifiedPeriod(int room);
+
+
+
 
 }

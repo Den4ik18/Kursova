@@ -105,6 +105,59 @@ public class RequestController {
                                                                                                                          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate secondDate){
         return requestService.volumeOfReservedRoomsAndTheirCharacteristicsByTheIndicatedFirmDuringTheSpecifiedPeriod(organization_id,firstDate,secondDate);
     }
+    @RequestMapping("/request8")
+    List<Customer>listOfUnsatisfiedCustomerAndTheirComplaints(){
+        return requestService.listOfUnsatisfiedCustomerAndTheirComplaints();
+    }
+
+    //10
+    @RequestMapping("/request9")
+    List<Customer> informationAboutCustomerWithSpecifiedRoom(@RequestParam int idRoom){
+        return requestService.informationAboutCustomerWithSpecifiedRoom(idRoom);
+    }
+     //11
+    @RequestMapping("/request10")
+    List<ReservationOrganization>informationAboutOrganizationWithWhichContractsForBookingRoomsForTheSpecifiedPeriod( @RequestParam(value = "firstDate", required = true)
+                                                                                                                     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate firstDate,
+                                                                                                                     @RequestParam(value = "secondDate", required = true)
+                                                                                                                     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate secondDate){
+        return requestService.informationAboutOrganizationWithWhichContractsForBookingRoomsForTheSpecifiedPeriod(firstDate,secondDate);
+    }
+    //12.1
+    @RequestMapping("/request11")
+    List<Customer>informationAboutCustomersWhoVisitThehotelMostOften(){
+        return requestService.informationAboutCustomersWhoVisitThehotelMostOften();
+    }
+    //12.2
+    @RequestMapping("/request12")
+    public List<Customer> informationAboutTheClientsWhoVisitTheHotelInGeneralAndEachCaseSeparately(@RequestParam int building_id) {
+        return requestService.informationAboutTheClientsWhoVisitTheHotelInGeneralAndEachCaseSeparately(building_id);
+    }
+
+    //13.1
+    @RequestMapping("/request13")
+    List<Customer>informationAboutNewCustomersWithinTheSpecifiedPeriod(@RequestParam(value = "firstDate", required = true)
+                                                                        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate firstDate,
+                                                                       @RequestParam(value = "secondDate", required = true)
+                                                                       @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate secondDate){
+        return requestService.informationAboutNewCustomersWithinTheSpecifiedPeriod(firstDate,secondDate);
+    }
+    //13.2
+    @RequestMapping("/request14")
+    List<Customer>informationAboutTheSpecifiedCustomer(@RequestParam int name_id){
+        return requestService.informationAboutTheSpecifiedCustomer(name_id);
+    }
+    @RequestMapping("/request15")
+    List<Room>informationAboutWhoWasBusyTheSpecifiedNumberDuringTheSpecifiedPeriod(@RequestParam ("room_id")int room_id){
+        return requestService.informationAboutWhoWasBusyTheSpecifiedNumberDuringTheSpecifiedPeriod(room_id);
+    }
+
+
+
+
+
+
+
 
 
 }

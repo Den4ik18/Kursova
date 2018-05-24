@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Запит №5</title>
+    <title>Запит №13</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body ng-app = "kursova" style="margin: 15px">
@@ -27,7 +27,7 @@
                         <a href="\request1_4.html" style="color: white">1.4</a>
                     </th>
                     <th  class="my-th"style="width: 50px">
-                        <a href="request2_1.html" style="color: white">2.1</a>
+                        <a href="\request2_1.html" style="color: white">2.1</a>
                     </th>
                     <th class="my-th"style="width: 50px">
                         <a href="\request2_2.html" style="color: white">2.2</a>
@@ -41,8 +41,8 @@
                     <th  class="my-th" style="width: 50px">
                         <a href="\request4_2.html" style="color: white"> 4.2 </a>
                     </th>
-                    <th  class="my-th-selected"style="width: 50px">
-                        <a  style="color: white">5</a>
+                    <th  class="my-th"style="width: 50px">
+                        <a href="\request5.html" style="color: white">5</a>
                     </th>
                     <th  class="my-th"style="width: 50px">
                         <a href="\request6.html" style="color: white">6</a>
@@ -65,8 +65,8 @@
                     <th  class="my-th"style="width: 50px">
                         <a href="\request12.html" style="color: white">12</a>
                     </th>
-                    <th  class="my-th"style="width: 50px">
-                        <a href="\request13.html" style="color: white">13</a>
+                    <th  class="my-th-selected"style="width: 50px">
+                        <a  style="color: white">13</a>
                     </th>
                     <th  class="my-th"style="width: 50px">
                         <a href="\request14.html" style="color: white">14</a>
@@ -78,10 +78,14 @@
                 </tbody>
             </table>
         </div>
-        <div class="panel-heading"> Інформація про конкретний вільний номер</div>
+        <div class="panel-heading"> Інформація про нових клієнтів протягом вказаного періоду</div>
         <div  style="font-size: 20px">
-            Номер кімнати:
-            <input type="text" id="Room">
+            Початкова дата:
+            <input type="date"name = "bdaytime" id="FirstDate"style="width: 130px">
+            </input>
+            <a>&ensp;</a>
+            Кінцева дата:
+            <input type="date" name = "bdaytime" id="SecondDate"style="width: 130px">
             </input>
             <a>&ensp;</a>
             <button  class="button-main" style="width: 90px; height: 30px; padding: 0px;font-size: 16px"
@@ -95,20 +99,25 @@
             <table ><!--class="table table-striped"-->
                 <thead>
                 <tr>
-                    <th width="40px">Номер кімнати</th>
-                    <th>Клас готелю</th>
-                    <th>Місцевість номера</th>
-                    <th>Дата звільнення номера</th>
+                    <th width="100px">П.І.Б клієнта</th>
+                    <th>Кімната</th>
+                    <th>Відгуки та пропогиції</th>
+                    <th>Назва додаткової послуги</th>
+                    <th>Вартість послуги</th>
+
+
 
                 </tr>
                 </thead>
 
                 <tbody>
-                <tr ng-repeat = "item in request5">
-                    <td>{{item.numberOfRoom}}</td>
-                    <td>{{item.building.classHotel}}</td>
-                    <td>{{item.building.areaOfNumber}}</td>
-                    <td>{{item.dataOfEviction}}</td>
+                <tr ng-repeat = "item in request13">
+                    <td>{{item.nameOfCustomer}}</td>
+                    <td>{{item.room}}</td>
+                    <td>{{item.feedbackAndSuggestion}}</td>
+                    <td>{{item.service.nameOfService}}</td>
+                    <td>{{item.service.costOfService}}</td>
+
 
                 </tr>
                 </tbody>
@@ -126,7 +135,7 @@
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 
 <script type="text/javascript" src="js/angular.min.js"></script>
-<script type="text/javascript" src="js/requests/request5.js"></script>
+<script type="text/javascript" src="js/requests/request13.js"></script>
 
 
 
