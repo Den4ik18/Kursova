@@ -2,9 +2,9 @@ package com.ohorodnik.lab5db.service.request;
 
 import com.ohorodnik.lab5db.model.Customer;
 import com.ohorodnik.lab5db.model.Organization;
-import com.ohorodnik.lab5db.repository.CustomerRepository;
-import com.ohorodnik.lab5db.repository.OrganizationRepository;
-import com.ohorodnik.lab5db.repository.RoomRepository;
+import com.ohorodnik.lab5db.model.ReservationOrganization;
+import com.ohorodnik.lab5db.model.Room;
+import com.ohorodnik.lab5db.repository.*;
 import com.ohorodnik.lab5db.requestModel.AmountCustomer;
 import com.ohorodnik.lab5db.requestModel.AmountOrganization;
 import com.ohorodnik.lab5db.requestModel.AmountRoom;
@@ -27,11 +27,37 @@ public class RequestService implements IRequestService {
     @Autowired
     OrganizationRepository organizationRepository;
 
+    @Autowired
+    ReservationRepository reservationRepository;
+
+    @Autowired
+    ReservationOrganizationRepository reservationOrganizationRepository;
+    //list without date 1.1
     @Override
     public List<Organization> listOrganizationWhatMadeReservationInTheOrderNotLessThanTheIndicated(int countRoom) {
         return organizationRepository.listOrganizationWhatMadeReservationInTheOrderNotLessThanTheIndicated(countRoom);
     }
+    //count without date 1.2
+    @Override
+    public List<AmountOrganization> countOrganizationWhatMadeReservationInTheOrderNotLessThanTheIndicated(int countRoom) {
+        List<AmountOrganization> list = new ArrayList<>();
+        List<Long> amountOfOrganization = organizationRepository.countOrganizationWhatMadeReservationInTheOrderNotLessThanTheIndicated(countRoom);
+        for(int i = 0;i<amountOfOrganization.size();i++){
+            list.add(
+                    new AmountOrganization(
+                            amountOfOrganization.get(i)
+                    )
+            );
+        }
+        return list;
+    }
 
+    //list with date 1.3
+    @Override
+    public List<Organization> listOrganizationWhatMadeReservationInTheOrderNotLessThanTheIndicatedDuringTheSpecifiedPeriod(int countRoom, LocalDate data1, LocalDate date2) {
+        return organizationRepository.listOrganizationWhatMadeReservationInTheOrderNotLessThanTheIndicatedDuringTheSpecifiedPeriod(countRoom,data1,date2);
+    }
+     //amount with date 1.4
     @Override
     public List<AmountOrganization> countOrganizationWhatMadeReservationInTheOrderNotLessThanTheIndicatedDuringTheSpecifiedPeriod(int countRoom, LocalDate firstDate, LocalDate secondDate) {
         List<AmountOrganization> list = new ArrayList<>();
@@ -103,6 +129,21 @@ public class RequestService implements IRequestService {
             ));
         }
         return list;
+    }
+
+    @Override
+    public List<Room> getInformationAboutCertainRoom(int idRoom) {
+        return roomRepository.getInformationAboutCertainRoom(idRoom);
+    }
+
+    @Override
+    public List<Room> listRoomWhatWillBeReleasedUntilSpecifiedDate(LocalDate date) {
+        return roomRepository.listRoomWhatWillBeReleasedUntilSpecifiedDate(date);
+    }
+
+    @Override
+    public List<ReservationOrganization> volumeOfReservedRoomsAndTheirCharacteristicsByTheIndicatedFirmDuringTheSpecifiedPeriod(int organization, LocalDate date1, LocalDate date2) {
+        return reservationOrganizationRepository.volumeOfReservedRoomsAndTheirCharacteristicsByTheIndicatedFirmDuringTheSpecifiedPeriod(organization,date1,date2);
     }
 
 }

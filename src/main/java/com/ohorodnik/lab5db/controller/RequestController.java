@@ -2,6 +2,8 @@ package com.ohorodnik.lab5db.controller;
 
 import com.ohorodnik.lab5db.model.Customer;
 import com.ohorodnik.lab5db.model.Organization;
+import com.ohorodnik.lab5db.model.ReservationOrganization;
+import com.ohorodnik.lab5db.model.Room;
 import com.ohorodnik.lab5db.requestModel.AmountCustomer;
 import com.ohorodnik.lab5db.requestModel.AmountOrganization;
 import com.ohorodnik.lab5db.requestModel.AmountRoom;
@@ -29,8 +31,22 @@ public class RequestController {
         return requestService.listOrganizationWhatMadeReservationInTheOrderNotLessThanTheIndicated(countRoom_id);
     }
 
+    @RequestMapping("/request1_2")
+    List<AmountOrganization> countOrganizationWhatMadeReservationInTheOrderNotLessThanTheIndicated(@RequestParam int countRoom_id){
+        return requestService.countOrganizationWhatMadeReservationInTheOrderNotLessThanTheIndicated(countRoom_id);
+    }
+
+    @RequestMapping("/request1_3")
+    List<Organization> listOrganizationWhatMadeReservationInTheOrderNotLessThanTheIndicatedDuringTheSpecifiedPeriod(@RequestParam int countRoom_id,
+                                                                                                                    @RequestParam(value = "firstDate", required = true)
+                                                                                                                    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate firstDate,
+                                                                                                                    @RequestParam(value = "secondDate", required = true)
+                                                                                                                    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate secondDate) {
+        return requestService.listOrganizationWhatMadeReservationInTheOrderNotLessThanTheIndicatedDuringTheSpecifiedPeriod(countRoom_id,firstDate,secondDate);
+    }
+
     @RequestMapping("/request1_4")
-    List<AmountOrganization> listOrganizationWhatMadeReservationInTheOrderNotLessThanTheIndicatedDuringTheSpecifiedPeriod(@RequestParam int countRoom_id,
+    List<AmountOrganization> countOrganizationWhatMadeReservationInTheOrderNotLessThanTheIndicatedDuringTheSpecifiedPeriod(@RequestParam int countRoom_id,
                                                                                                                           @RequestParam(value = "firstDate", required = true)
                                                                                                                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate firstDate,
                                                                                                                           @RequestParam(value = "secondDate", required = true)
@@ -72,5 +88,23 @@ public class RequestController {
     List<AmountRoom> countFreeRoomForSpecifiedCharacteristicForThisPeriod(@RequestParam int building_id) {
         return requestService.countFreeRoomForSpecifiedCharacteristicForThisPeriod(building_id);
     }
+
+    @RequestMapping("/request5")
+    List<Room> getInformationAboutCertainRoom(@RequestParam int idRoom){
+        return requestService.getInformationAboutCertainRoom(idRoom);
+    }
+    @RequestMapping("/request6")
+    List<Room> listRoomWhatWillBeReleasedUntilSpecifiedDate(@RequestParam(value = "date", required = true)@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate date){
+        return requestService.listRoomWhatWillBeReleasedUntilSpecifiedDate(date);
+    }
+
+    @RequestMapping("/request7")
+    List<ReservationOrganization> volumeOfReservedRoomsAndTheirCharacteristicsByTheIndicatedFirmDuringTheSpecifiedPeriod(@RequestParam int organization_id, @RequestParam(value = "firstDate", required = true)
+                                                                                                                         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate firstDate,
+                                                                                                                         @RequestParam(value = "secondDate", required = true)
+                                                                                                                         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate secondDate){
+        return requestService.volumeOfReservedRoomsAndTheirCharacteristicsByTheIndicatedFirmDuringTheSpecifiedPeriod(organization_id,firstDate,secondDate);
+    }
+
 
 }

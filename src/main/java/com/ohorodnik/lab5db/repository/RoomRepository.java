@@ -22,6 +22,15 @@ public interface RoomRepository extends JpaRepository<Room,Integer> {
             "FROM Room t WHERE t.dataOfEviction < :data")
     List<Long> countFreeRoomGeneral(@Param("data")LocalDate data);
 
+    @Query("SELECT room FROM Room room WHERE room.numberOfRoom = :idRoom" +
+            " GROUP BY room.numberOfRoom")
+    List<Room> getInformationAboutCertainRoom(@Param("idRoom") int idRoom );
+
+    @Query("SELECT room FROM Room room WHERE room.dataOfEviction <:date ")
+    List<Room> listRoomWhatWillBeReleasedUntilSpecifiedDate(@Param("date")LocalDate date);
+
+
+
 
             /*
              @Query("select c from Consumer c where c.phonenumber.street.mtc_id = :mtc_id")

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Запит №1.4</title>
+    <title>Запит №1.3</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body ng-app = "kursova" style="margin: 15px">
@@ -20,11 +20,11 @@
                     <th  class="my-th"style="width: 50px">
                         <a href="\request1_2.html" style="color: white">1.2</a>
                     </th>
-                    <th  class="my-th"style="width: 50px">
-                        <a href="\request1_3.html" style="color: white">1.3</a>
+                    <th  class="my-th-selected"style="width: 50px">
+                        <a style="color: white">1.3</a>
                     </th>
-                    <th class="my-th-selected"style="width: 50px">
-                        <a  style="color: white">1.4</a>
+                    <th class="my-th"style="width: 50px">
+                        <a href="\request1_4.html" style="color: white">1.4</a>
                     </th>
                     <th  class="my-th"style="width: 50px">
                         <a href="\request2_1.html" style="color: white">2.1</a>
@@ -78,7 +78,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="panel-heading"> Загальна кількість фірм, які здійснили бронювання місць у обсязі не меншому від вказаного протягом вказаного періоду </div>
+        <div class="panel-heading"> Перелік фірм, які здійснили бронювання місць у обсязі не меншому від вказаного протягом указаного періоду </div>
         <div  style="font-size: 20px">
             Кількість забронюваних номерів:
             <input type="text" id="Amount" style="width: 90px">
@@ -103,7 +103,8 @@
             <table ><!--class="table table-striped"-->
                 <thead>
                 <tr>
-                    <th width="40px">Кількість фірм</th>
+                    <th width="40px">Ід</th>
+                    <th>Назва фірми</th>
 
 
 
@@ -111,8 +112,9 @@
                 </thead>
 
                 <tbody>
-                <tr ng-repeat = "item in request1_4">
-                    <td>{{item.amountOrganization}}</td>
+                <tr ng-repeat = "item in request1_3">
+                    <td>{{item.idOrganization}}</td>
+                    <td>{{item.nameOfOrganization}}</td>
 
 
 
@@ -133,7 +135,7 @@
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 
 <script type="text/javascript" src="js/angular.min.js"></script>
-<script type="text/javascript" src="js/requests/request1_4.js"></script>
+<script type="text/javascript" src="js/requests/request1_3.js"></script>
 
 
 
