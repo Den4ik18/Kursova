@@ -69,6 +69,42 @@ App.controller('Customer', function ($http, $scope) {
         var feedback = document.getElementById("Feedback").value;
 
 
+        /*var upperLatin="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var lowerLatin="abcdefghijklmnopqrstuvwxyz";
+
+        var lowerCyrillic="абвгдеєжзиіїйклмнопрстуфхцчшщьюяы";
+        var upperCyrillic="АБВГДЕЄЖЗИІЇЙКЛМНОПРСТУФЧЦЧШЩЬЮЯЫ";
+
+
+        var nameCheck = true;
+        if(lowerLatin.includes(name[0])) nameCheck=false;
+        if(upperLatin.includes(name[0])) nameCheck=false;
+        if(lowerCyrillic.includes(name[0])) nameCheck=false;
+        if (name.length<2) nameCheck=false;
+        if (name.length>35) nameCheck=false;
+
+
+        for (var i = 1; i < name.length; i++)
+        {
+            if(!(lowerCyrillic.includes(name[i]))) nameCheck=false;
+            if(name.indexOf(' ') >= 0) nameCheck = false;
+        }
+
+        /!*console.log("lowerLatin",lowerLatin.includes(name[0]),"upperLatin",upperLatin.includes(name[0]),"lowerCyrillic",lowerCyrillic.includes(name[0]));
+        console.log("space index = ",name.indexOf(' '));
+        console.log("length = ",name.length);*!/
+
+        if (name&&number&&bookingDate&&dateOfSettlement&&dataOfEviction&&bookingDate&&feedback&&nameCheck){
+            document.getElementById("insertCustomer").disabled=false;
+            document.getElementById("insertCustomer").style.opacity=1;
+
+        }
+        else{
+            document.getElementById("insertCustomer").disabled=true;
+            document.getElementById("insertCustomer").style.opacity=0.3;
+
+        }*/
+
         var req = {
             method: 'POST',
             url: '/customer/insert',
