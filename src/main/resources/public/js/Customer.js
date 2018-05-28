@@ -75,7 +75,7 @@ App.controller('Customer', function ($http, $scope) {
             data: {
                 nameOfCustomer: name ,
                 room: number ,
-                bookingData: bookingDate,
+                bookingDate: bookingDate,
                 dataOfSettlement: dateOfSettlement,
                 dataOfEviction: dataOfEviction,
                 service_id: service_id,
