@@ -6,7 +6,7 @@ app.controller("AppCtrl", function ($http, $scope){
     var date2= '2017-05-01';
     //var building_id=1;
     var building_id=2;
-    $http.get('http://localhost:8080/request/request2_2?firstDate='+date1+'&secondDate='+
+    $http.get('/request/request2_2?firstDate='+date1+'&secondDate='+
         date2+'&building_id='+building_id).then(function (response){
         $scope.request2_2=response.data;
         console.log(response);
@@ -34,7 +34,7 @@ app.controller("AppCtrl", function ($http, $scope){
         building_id= document.getElementById("Area").options[index].value;
         date1= document.getElementById("FirstDate").value;
         date2= document.getElementById("SecondDate").value;
-        $http.get('http://localhost:8080/request/request2_2?firstDate='+date1+'&secondDate='+
+        $http.get('/request/request2_2?firstDate='+date1+'&secondDate='+
             date2+'&building_id='+building_id).then(function (response){
             $scope.request2_2=response.data;
             console.log(response);

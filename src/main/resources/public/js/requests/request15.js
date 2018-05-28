@@ -3,7 +3,7 @@ var app = angular.module("kursova", []);
 app.controller("AppCtrl", function ($http, $scope){
     $scope.request15 = [];
     var room_id = 76;
-    $http.get('http://localhost:8080/request/request15?room_id='+room_id).then(function (response){
+    $http.get('/request/request15?room_id='+room_id).then(function (response){
         $scope.request15=response.data;
         console.log(response);
         $http.get('/room/get').then(function (response){
@@ -24,7 +24,7 @@ app.controller("AppCtrl", function ($http, $scope){
     this.update_request = function add() {
         var index = document.getElementById("Room").selectedIndex;
         room_id= document.getElementById("Room").options[index].value;
-        $http.get('http://localhost:8080/request/request15?room_id='+room_id).then(function (response){
+        $http.get('/request/request15?room_id='+room_id).then(function (response){
             $scope.request15=response.data;
             console.log(response);
         });

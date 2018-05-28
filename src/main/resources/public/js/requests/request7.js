@@ -5,7 +5,7 @@ app.controller("AppCtrl", function ($http, $scope){
     var date1= '2017-01-10';
     var date2= '2017-06-04';
     var organization_id = 2;
-    $http.get('http://localhost:8080/request/request7?organization_id='+organization_id+'&firstDate='+date1+'&secondDate='+
+    $http.get('/request/request7?organization_id='+organization_id+'&firstDate='+date1+'&secondDate='+
         date2).then(function (response){
         $scope.request7=response.data;
         console.log(response);
@@ -32,7 +32,7 @@ app.controller("AppCtrl", function ($http, $scope){
         organization_id= document.getElementById("Organization").options[index].value;
         date1= document.getElementById("FirstDate").value;
         date2= document.getElementById("SecondDate").value;
-        $http.get('http://localhost:8080/request/request7?organization_id='+organization_id+'&firstDate='+date1+'&secondDate='+date2).then(function (response){
+        $http.get('/request/request7?organization_id='+organization_id+'&firstDate='+date1+'&secondDate='+date2).then(function (response){
             $scope.request7=response.data;
             console.log(response);
         });

@@ -4,7 +4,7 @@ app.controller("AppCtrl", function ($http, $scope){
     $scope.request6 = [];
     var date= '2017-06-01';
 
-    $http.get('http://localhost:8080/request/request6?date='+date).then(function (response){
+    $http.get('/request/request6?date='+date).then(function (response){
         $scope.request6=response.data;
         console.log(response);
         document.getElementById("FirstDate").value=date;
@@ -12,7 +12,7 @@ app.controller("AppCtrl", function ($http, $scope){
 
     this.update_request = function add() {
         date= document.getElementById("FirstDate").value;
-        $http.get('http://localhost:8080/request/request6?date='+date).then(function (response){
+        $http.get('/request/request6?date='+date).then(function (response){
             $scope.request6=response.data;
             console.log(response);
         });
