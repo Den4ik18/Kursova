@@ -21,7 +21,7 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     @Query("select count(cus.idCustomer) from Customer cus where cus.building.idBuilding = :building and cus.dataOfEviction between :data1 and :data2")
     List<Long>countCustomerWhatSettledForSpecifiedPeriodAndInRoomWithCharacteristic(@Param("data1")LocalDate data1, @Param("data2")LocalDate data2, @Param("building")int building);
 
-    @Query("SELECT cus FROM Customer cus WHERE cus.feedbackAndSuggestion = 'negative'")
+    @Query("SELECT cus FROM Customer cus WHERE cus.feedbackAndSuggestion LIKE 'негативний'")
     List<Customer>listOfUnsatisfiedCustomerAndTheirComplaints();
 
     @Query("SELECT cus FROM Customer cus WHERE cus.room = :room")
