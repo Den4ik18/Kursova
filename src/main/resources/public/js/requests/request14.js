@@ -2,7 +2,7 @@ var app = angular.module("kursova", []);
 
 app.controller("AppCtrl", function ($http, $scope){
     $scope.request14 = [];
-    var name_id = 2;
+    var name_id = 1;
     $http.get('/request/request14?name_id='+name_id).then(function (response){
         $scope.request14=response.data;
         console.log(response);
@@ -16,7 +16,7 @@ app.controller("AppCtrl", function ($http, $scope){
                 option.value = customer[i].idCustomer;
                 selector.add(option);
             }
-            selector.selectedIndex=1;
+            //selector.selectedIndex=1;
             //selector.selectedIndex=1;
         });
     });
