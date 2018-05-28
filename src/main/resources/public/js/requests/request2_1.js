@@ -3,7 +3,7 @@ var app = angular.module("kursova", []);
 app.controller("AppCtrl", function ($http, $scope){
     $scope.request2_1 = [];
     var date1= '2017-01-01';
-    var date2= '2017-05-01';
+    var date2= '2018-05-01';
     //var building_id=1;
     var building_id=2;
     $http.get('/request/request2_1?building_id='+building_id+'&firstDate='+date1+'&secondDate='+
