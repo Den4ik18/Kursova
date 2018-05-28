@@ -60,7 +60,7 @@ public interface IRequestService {
     List<Customer>informationAboutCustomersWhoVisitThehotelMostOften();
 
     //12.1
-    List<Customer>informationAboutTheClientsWhoVisitTheHotelInGeneralAndEachCaseSeparately(int building);
+    List<Customer>informationAboutTheClientsWhoVisitTheHotelInGeneralAndEachCaseSeparately(int idBuilding);
 
    //13.1
    List<Customer>informationAboutNewCustomersWithinTheSpecifiedPeriod( LocalDate date1,LocalDate date2);
