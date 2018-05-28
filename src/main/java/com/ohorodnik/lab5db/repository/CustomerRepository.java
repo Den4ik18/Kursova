@@ -30,7 +30,7 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     @Query("SELECT cus FROM  Customer cus GROUP BY cus.nameOfCustomer order by count(cus.idCustomer) desc ")
     List<Customer>informationAboutCustomersWhoVisitThehotelMostOften(Pageable pageable);
 
-    @Query("SELECT cus FROM Customer cus WHERE cus.building.idBuilding =:building " +
+    @Query("SELECT cus FROM Customer cus WHERE cus.building.idBuilding = :building " +
             "GROUP BY cus.nameOfCustomer order by count(cus.idCustomer) desc ")
     List<Customer>informationAboutTheClientsWhoVisitTheHotelInGeneralAndEachCaseSeparately(@Param("building")int building,Pageable pageable);
 
