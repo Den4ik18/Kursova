@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Controller {
     @RequestMapping("/")
     public String getIndex() {
-        return "main.html";
+        return "index.html";
     }
 }
