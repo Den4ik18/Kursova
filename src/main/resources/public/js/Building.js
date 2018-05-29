@@ -16,7 +16,7 @@ App.controller('Building',function ($http,$scope) {
         var countRooms = document.getElementById("CountRoomsOnTheFloor").value;
         var area = document.getElementById("AreaOfNumbers").value;
         var address = document.getElementById("AddressOfHotel").value;
-        var upperLatin="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+       /* var upperLatin="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         var lowerLatin="abcdefghijklmnopqrstuvwxyz";
 
         var lowerCyrillic="абвгдеєжзиіїйклмнопрстуфхцчшщьюяы";
@@ -35,13 +35,13 @@ App.controller('Building',function ($http,$scope) {
         {
             if(!(lowerCyrillic.includes(name[i]))) nameCheck=false;
             if(name.indexOf(' ') >= 0) nameCheck = false;
-        }
+        }*/
 
         /*console.log("lowerLatin",lowerLatin.includes(name[0]),"upperLatin",upperLatin.includes(name[0]),"lowerCyrillic",lowerCyrillic.includes(name[0]));
         console.log("space index = ",name.indexOf(' '));
         console.log("length = ",name.length);*/
 
-        if (name&&age&&weight&&height&&durationOfStay&&offspring&&cageNumber&&hasSexBeenChosen&&nameCheck){
+        /*if (name&&age&&weight&&height&&durationOfStay&&offspring&&cageNumber&&hasSexBeenChosen&&nameCheck){
             document.getElementById("createAnimalIndividualButton").disabled=false;
             document.getElementById("createAnimalIndividualButton").style.opacity=1;
 
@@ -51,7 +51,7 @@ App.controller('Building',function ($http,$scope) {
             document.getElementById("createAnimalIndividualButton").style.opacity=0.3;
 
         }
-
+*/
         var req = {
             method: 'POST',
             url: '/building/insert',
