@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/room")
 public class RoomController {
     //@Autowired
-    //RoomServiceImpl organizationService;
+    //impls organizationService;
 
     @Autowired
     RoomRepository roomRepository;

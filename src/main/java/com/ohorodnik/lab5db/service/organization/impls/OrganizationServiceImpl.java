@@ -14,9 +14,36 @@ import java.util.stream.Collectors;
 
 @Service
 public class OrganizationServiceImpl implements IOrganizationService {
+
+    @Autowired
+    OrganizationRepository organizationRepository;
+    @Override
+    public List<Organization> getAll() {
+        return (List<Organization>) organizationRepository.findAll();
+    }
+
+    @Override
+    public Organization insert(Organization organization) {
+        return organizationRepository.save(organization);
+    }
+
+    @Override
+    public Organization update(Organization organization) {
+        return organizationRepository.save(organization);
+    }
+
+    @Override
+    public Organization getById(int id) {
+        return organizationRepository.findById(id).get();
+    }
+
+    @Override
+    public void delete(int id) {
+        organizationRepository.deleteById(id);
+    }
     //@Autowired
     //OrganizationDAOFakeImpl organizationDAOFake;
-    OrganizationRepository organizationRepository;
+    /*OrganizationRepository organizationRepository;
 
     @Override
     public Organization insertOrganization(Organization organization) {
@@ -40,5 +67,5 @@ public class OrganizationServiceImpl implements IOrganizationService {
     public List<Organization> getOrganizations()  {
         //return organizationDAOFake.getAll().stream().collect(Collectors.toList());
         return organizationRepository.findAll();
-    }
+    }*/
 }

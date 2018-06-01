@@ -20,6 +20,31 @@ public class BuildingServiceImpl implements IBuildingService {
     BuildingRepository buildingRepository;
 
     @Override
+    public List<Building> getAll() {
+        return  (List<Building>)buildingRepository.findAll();
+    }
+
+    @Override
+    public Building insert(Building building) {
+        return buildingRepository.save(building);
+    }
+
+    @Override
+    public Building update(Building building) {
+        return buildingRepository.save(building);
+    }
+
+    @Override
+    public Building getById(int id) {
+        return buildingRepository.findById(id).get();
+    }
+
+    @Override
+    public void delete(int id) {
+         buildingRepository.deleteById(id);
+    }
+
+    /*@Override
     public Building insertBuilding(Building building) {
         return buildingRepository.save(building);
     }
@@ -39,7 +64,7 @@ public class BuildingServiceImpl implements IBuildingService {
         return buildingRepository.findAll();
     }
 
-    /*@Override
+    *//*@Override
     public Building getBuildingByAddress(String building) throws SQLException {
         List<Building> all = buildingDAO.getAll();
         return all.stream()

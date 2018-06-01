@@ -23,6 +23,31 @@ public class TypeOfOrganizationServiceImpl implements ITypeOfOrganizationService
     TypeOfOrganizationRepository typeOfOrganizationRepository;
 
     @Override
+    public List<TypeOfOrganization> getAll() {
+        return (List<TypeOfOrganization>) typeOfOrganizationRepository.findAll();
+    }
+
+    @Override
+    public TypeOfOrganization insert(TypeOfOrganization typeOfOrganization) {
+        return typeOfOrganizationRepository.save(typeOfOrganization);
+    }
+
+    @Override
+    public TypeOfOrganization update(TypeOfOrganization typeOfOrganization) {
+        return typeOfOrganizationRepository.save(typeOfOrganization);
+    }
+
+    @Override
+    public TypeOfOrganization getById(int id) {
+        return typeOfOrganizationRepository.findById(id).get();
+    }
+
+    @Override
+    public void delete(int id) {
+         typeOfOrganizationRepository.deleteById(id);
+    }
+
+    /*@Override
     public TypeOfOrganization insertTypeOfOrganization(TypeOfOrganization typeOfOrganization) {
         //return typeOfOrganizationDAOFake.insertTypeOfOrganization(typeOfOrganization);
         return typeOfOrganizationRepository.save(typeOfOrganization);
@@ -46,5 +71,7 @@ public class TypeOfOrganizationServiceImpl implements ITypeOfOrganizationService
     public List<TypeOfOrganization> getTypes() throws SQLException {
         //return typeOfOrganizationDAOFake.getAll().stream().collect(Collectors.toList());
          return typeOfOrganizationRepository.findAll();
-    }
+    }*/
+
+
 }

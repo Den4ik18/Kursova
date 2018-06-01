@@ -19,6 +19,31 @@ public class ServiceServiceImpl implements IServiceService {
     ServiceRepository serviceRepository;
 
     @Override
+    public List<Service> getAll() {
+        return (List<Service>)serviceRepository.findAll();
+    }
+
+    @Override
+    public Service insert(Service service) {
+        return serviceRepository.save(service);
+    }
+
+    @Override
+    public Service update(Service service) {
+        return serviceRepository.save(service);
+    }
+
+    @Override
+    public Service getById(int id) {
+        return serviceRepository.findById(id).get();
+    }
+
+    @Override
+    public void delete(int id) {
+        serviceRepository.deleteById(id);
+    }
+
+    /*@Override
     public Service insertService(Service service) {
         //return serviceDAOFake.insertService(service);
         return serviceRepository.save(service);
@@ -41,5 +66,5 @@ public class ServiceServiceImpl implements IServiceService {
     public List<Service> getServices() throws SQLException {
         //return serviceDAOFake.getAll().stream().collect(Collectors.toList());
         return serviceRepository.findAll();
-    }
+    }*/
 }
