@@ -27,7 +27,7 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     @Query("SELECT cus FROM Customer cus WHERE cus.room = :room")
     List<Customer> informationAboutCustomerWithSpecifiedRoom(@Param("room")int room);
 
-    @Query("SELECT cus FROM  Customer cus GROUP BY Customer.nameOfCustomer order by count(cus.idCustomer) desc ")
+    @Query("SELECT cus FROM  Customer cus GROUP BY cus.nameOfCustomer order by count(cus.idCustomer) desc ")
     List<Customer>informationAboutCustomersWhoVisitThehotelMostOften(Pageable pageable);
 
     @Query("SELECT cus FROM Customer cus WHERE cus.building.idBuilding = :idBuilding " +
