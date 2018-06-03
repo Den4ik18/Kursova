@@ -28,14 +28,14 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     List<Customer> informationAboutCustomerWithSpecifiedRoom(@Param("room")int room);
     //
 
-    /*@Query("SELECT cus FROM  Customer cus GROUP BY cus.nameOfCustomer order by count(cus.idCustomer) desc ")
-    List<Customer>informationAboutCustomersWhoVisitThehotelMostOften(Pageable pageable);*/
+    @Query("SELECT cus FROM  Customer cus GROUP BY cus.nameOfCustomer order by count(cus.idCustomer) desc ")
+    List<Customer>informationAboutCustomersWhoVisitThehotelMostOften(Pageable pageable);
 
     //
     //Query q = em.createNativeQuery("SELECT a.firstname, a.lastname FROM Author a");
     //11
-    @Query(value = "SELECT c.name_of_customer  FROM Customer c  GROUP BY c.name_of_customer order by count(idCustomer) desc LIMIT 1;", nativeQuery = true)
-    List<Customer>informationAboutCustomersWhoVisitThehotelMostOften();
+    //@Query(value = "SELECT c.name_of_customer  FROM Customer c  GROUP BY c.name_of_customer order by count(idCustomer) desc LIMIT 1;", nativeQuery = true)
+    //List<Customer>informationAboutCustomersWhoVisitThehotelMostOften();
 
     @Query("SELECT cus FROM Customer cus WHERE cus.building.idBuilding = :idBuilding " +
             "GROUP BY cus.nameOfCustomer order by count(cus.idCustomer) desc ")
