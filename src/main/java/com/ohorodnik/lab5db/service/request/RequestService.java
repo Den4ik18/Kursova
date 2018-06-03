@@ -166,10 +166,8 @@ public class RequestService implements IRequestService {
 
     @Override
     public List<Customer> informationAboutCustomersWhoVisitThehotelMostOften() {
-        return customerRepository.informationAboutCustomersWhoVisitThehotelMostOften();
-
+        return customerRepository.informationAboutCustomersWhoVisitThehotelMostOften(new PageRequest(0, 1));
     }
-    //new PageRequest(0, 1)
 
     @Override
     public List<Customer> informationAboutTheClientsWhoVisitTheHotelInGeneralAndEachCaseSeparately(int idBuilding) {
