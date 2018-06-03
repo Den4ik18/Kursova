@@ -34,7 +34,7 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     //
     //Query q = em.createNativeQuery("SELECT a.firstname, a.lastname FROM Author a");
     //11
-    @Query(value = "SELECT c.name_of_customer  FROM Customer c  GROUP BY c.name_of_customer order by count(id_customer) desc LIMIT 1;", nativeQuery = true)
+    @Query(value = "SELECT c.name_of_customer  FROM Customer c  GROUP BY c.name_of_customer order by count(c.idCustomer) desc LIMIT 1;", nativeQuery = true)
     List<Customer>informationAboutCustomersWhoVisitThehotelMostOften();
 
     @Query("SELECT cus FROM Customer cus WHERE cus.building.idBuilding = :idBuilding " +
