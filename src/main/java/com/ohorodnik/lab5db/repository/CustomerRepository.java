@@ -44,6 +44,7 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     @Query("SELECT cus FROM Customer cus WHERE cus.dataOfSettlement BETWEEN :date1 AND :date2")
     List<Customer>informationAboutNewCustomersWithinTheSpecifiedPeriod(@Param("date1") LocalDate date1,@Param("date2")LocalDate date2);
 
-    @Query("SELECT cus FROM Customer cus WHERE cus.idCustomer =:name GROUP BY cus.nameOfCustomer ORDER BY count(cus.idCustomer)")
+    //@Query("SELECT cus FROM Customer cus WHERE cus.idCustomer =:name GROUP BY cus.nameOfCustomer ORDER BY count(cus.idCustomer)")
+    @Query(value = "SELECT * FROM Customer c WHERE cus.idCustomer =:name GROUP BY c.name_of_customer order by count(c.id_customer);", nativeQuery = true)
     List<Customer>informationAboutTheSpecifiedCustomer(@Param("name")int name);
 }
