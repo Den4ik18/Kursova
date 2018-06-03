@@ -30,7 +30,7 @@ public interface RoomRepository extends JpaRepository<Room,Integer> {
     List<Room> listRoomWhatWillBeReleasedUntilSpecifiedDate(@Param("date")LocalDate date);
 
     @Query("SELECT room FROM Room room WHERE room.numberOfRoom = :number AND room.dataOfSettlement = '2017-03-13' " +
-            " AND room.dataOfEviction= '2017-03-18'")
+            " AND room.dataOfEviction= '2018-03-13'")
     List<Room>informationAboutWhoWasBusyTheSpecifiedNumberDuringTheSpecifiedPeriod(@Param("number")int number);
 
 

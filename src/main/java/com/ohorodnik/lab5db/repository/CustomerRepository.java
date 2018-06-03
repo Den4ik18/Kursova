@@ -34,7 +34,7 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     //
     //Query q = em.createNativeQuery("SELECT a.firstname, a.lastname FROM Author a");
     //11
-    //@Query(value = "SELECT c.name_of_customer  FROM Customer c  GROUP BY c.name_of_customer order by count(idCustomer) desc LIMIT 1;", nativeQuery = true)
+    //@Query(value = "SELECT c.name_of_customer  FROM Customer c  GROUP BY c.name_of_customer order by count(idCustomer) desc LIMIT 1", nativeQuery = true)
     //List<Customer>informationAboutCustomersWhoVisitThehotelMostOften();
 
     @Query("SELECT cus FROM Customer cus WHERE cus.building.idBuilding = :idBuilding " +
@@ -44,7 +44,7 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     @Query("SELECT cus FROM Customer cus WHERE cus.dataOfSettlement BETWEEN :date1 AND :date2")
     List<Customer>informationAboutNewCustomersWithinTheSpecifiedPeriod(@Param("date1") LocalDate date1,@Param("date2")LocalDate date2);
 
-    //@Query("SELECT cus FROM Customer cus WHERE cus.idCustomer =:name GROUP BY cus.nameOfCustomer ORDER BY count(cus.idCustomer)")
-    @Query(value = "SELECT * FROM customer  WHERE id_customer =:name GROUP BY name_of_customer order by id_customer", nativeQuery = true)
+    //@Query(value = "SELECT * FROM customer  WHERE id_customer =:name GROUP BY name_of_customer order by id_customer", nativeQuery = true)
+    @Query("SELECT cus FROM Customer cus WHERE cus.idCustomer =:name GROUP BY cus.nameOfCustomer ORDER BY count(cus.idCustomer)")
     List<Customer>informationAboutTheSpecifiedCustomer(@Param("name")int name);
 }
