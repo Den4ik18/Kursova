@@ -64,6 +64,7 @@ body {
     cursor:pointer;
 }
 
+
 .button-main {
     width: 300px;
     background-color:#68d651;
@@ -95,10 +96,11 @@ body {
     /*background: #fff5d8;*/
     color: #ffffff;
 }
+
 .my-th {
     width: 50px;
     text-align: center;
-    font-size:14px;
+    font-size:16px;
     border: 2px solid #20c931;
     background: #68d651;
     /*background: #fff5d8;*/
@@ -126,4 +128,17 @@ body {
 .myButton:active {
     position:relative;
     top:1px;
+}
+a.button{
+   width: 140px;
+    height: 50px;
+    background-color:#68d651;
+    border-radius:16px;
+    text-decoration: none;
+    padding: 8px;
+    font-size: 22px;
+    border:2px solid #20c931;
+    cursor:pointer;
+    color:white;
+    font-family:Arial;
 }
